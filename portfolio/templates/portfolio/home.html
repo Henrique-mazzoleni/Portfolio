@@ -1,0 +1,28 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+    <h1>Henrique's Portfolio</h1>
+
+    {% load static %}
+
+    <a href="{% static 'portfolio/CV.pdf' %}">Resume</a>
+    <br>
+    <img src="{% static 'portfolio/Hello.jpg' %}">
+
+    {% for project in projects %}
+
+    <a href="{% url 'blog:all_blogs' %}">Go to blog posts</a>
+
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+    <img src="{{ project.image.url }}">
+
+    {% if project.url %}
+    <br><a href="{{ projects.url }}">Link</a>
+    {% endif %}
+
+
+    {% endfor %}
+
+{% endblock %}
